@@ -10,7 +10,7 @@
     <meta name="keywords" content="Gheav, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
-    <title>CodeIgniter 4 - Bootstrap 5 Admin Template</title>
+    <title>Login | Dashboard </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link href="<?= base_url('assets/css/app.css') ?>" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -27,15 +27,12 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="text-center mt-4">
-                                    <h1 class="h2">Welcome to CodeIgniter 4 Starter Panel</h1>
+                                    <h1 class="h2">Welcome to Dashboard</h1>
                                     <p class="lead">
                                         Sign in to your account to continue
                                     </p>
                                 </div>
                                 <div class="m-sm-4">
-                                    <div class="text-center">
-                                        <img src="<?= base_url('assets/img/avatars/avatar.jpg') ?>" alt="Charles Hall" class="img-fluid rounded-circle" width="132" height="132" />
-                                    </div>
                                     <form action="<?= base_url('GetLogin'); ?>" method="POST">
                                         <div class="mb-3">
                                             <label class="form-label">Email</label>
