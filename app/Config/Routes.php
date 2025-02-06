@@ -60,6 +60,10 @@ $routes->post('menuManagement/createSubMenu', 'Developers\MenuManagement::create
 $routes->get('menuManagement', 'Developers\MenuManagement::index');
 $routes->get('crudGenerator', 'Developers\CRUDGenerator::index');
 
+//Tree Routes
+$routes->get('trees', 'Trees::index');
+$routes->get('trees/form', 'Trees::form');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

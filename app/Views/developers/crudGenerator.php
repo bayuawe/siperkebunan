@@ -95,9 +95,9 @@
             </div>
             <div class="card-body">
                 <?php
-                $functionName   = str_replace(' ', '', ucwords(strtolower(str_replace('_', ' ', $tableName))));
-                $modelName      = str_replace(' ', '', ucwords(strtolower(str_replace('_', ' ', $menu))));
-                $title          = ucwords(strtolower(str_replace('_', ' ', $menu)));
+                $functionName = str_replace(' ', '', ucwords(strtolower(str_replace('_', ' ', $tableName ?? ''))));
+                $modelName = str_replace(' ', '', ucwords(strtolower(str_replace('_', ' ', $menu ?? ''))));
+                $title     = ucwords(strtolower(str_replace('_', ' ', $menu ?? '')));
 
                 ?>
 
