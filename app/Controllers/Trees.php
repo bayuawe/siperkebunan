@@ -40,16 +40,16 @@ class Trees extends BaseController
 
 	// Update
 	public function updateTree()
-	{
-		$updateTree = $this->TreeModel->updateTree($this->request->getPost(null, FILTER_UNSAFE_RAW));
-		if ($updateTree) {
-			session()->setFlashdata('notif_success', '<b>Successfully updated Tree</b>');
-			return redirect()->to(base_url('trees'));
-		} else {
-			session()->setFlashdata('notif_error', '<b>Failed to update Tree</b>');
-			return redirect()->to(base_url('trees'));
-		}
-	}
+        {
+            $updateTree = $this->TreeModel->updateTree($this->request->getPost(null, FILTER_UNSAFE_RAW));
+            if ($updateTree) {
+                session()->setFlashdata('notif_success', '<b>Successfully update Tree</b>');
+                return redirect()->to(base_url('trees'));
+            } else {
+                session()->setFlashdata('notif_error', '<b>Failed to update Tree</b>');
+                return redirect()->to(base_url('trees'));
+            }
+        }
 
 	// Delete
 	public function deleteTree($TreeID)

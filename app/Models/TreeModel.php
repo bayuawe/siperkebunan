@@ -66,17 +66,28 @@ class TreeModel extends Model
     }
 
     // Update
+    // public function updateTree($dataTree)
+    // {
+    //     return $this->db->table('tree')->update([
+    //       'tahun_tanam'     	=> $dataTree['inputTahunTanam'],
+    //       'jenis_bibit'     	=> $dataTree['inputJenisBibit'],
+    //         ], ['id_pohon' => $dataTree['inputTreeID']]);
+    // }
+
     public function updateTree($dataTree)
-    {
-        return $this->db->table('tree')->update([
-            'tahun_tanam'     => $dataTree['inputTahunTanam'],
-            'jenis_bibit'     => $dataTree['inputJenisBibit'],
-        ], ['id_pohon' => $dataTree['inputIdPohon']]); // Menggunakan 'id_pohon' sebagai kunci
-    }
+{
+    return $this->db->table('tree')->where('id', $dataTree['treeID'])->update([
+        'id_pohon'     => $dataTree['inputIdPohon'],
+        'tahun_tanam'  => $dataTree['inputTahunTanam'],
+        'jenis_bibit'  => $dataTree['inputJenisBibit'],
+    ]);
+}
+
 
     // Delete
-    public function deleteTree($TreeID)
+    public function deleteTree($treeID)
     {
-        return $this->db->table('tree')->delete(['id_pohon' => $TreeID]); // Menggunakan 'id_pohon' sebagai kunci
+        return $this->db->table('tree')->delete(['id' => $treeID]);
     }
+    
 }

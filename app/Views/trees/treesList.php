@@ -29,7 +29,7 @@
                                     <td><?= $tree['created_at']; ?></td>
                                     <td><?= $tree['updated_at']; ?></td>
                                     <td>
-                                        <button class="btn btn-info btn-sm btnEdit" data-bs-toggle="modal" data-bs-target="#formTreeModal" data-id="<?= $tree['id_pohon']; ?>" data-tahuntanam="<?= $tree['tahun_tanam']; ?>" data-jenisbibit="<?= $tree['jenis_bibit']; ?>" data-createdat="<?= $tree['created_at']; ?>" data-updatedat="<?= $tree['updated_at']; ?>">Update</button>
+                                        <button class="btn btn-info btn-sm btnEdit" data-bs-toggle="modal" data-bs-target="#formTreeModal" data-id="<?= $tree['id']; ?>" data-idpohon="<?= $tree['id_pohon']; ?>" data-tahuntanam="<?= $tree['tahun_tanam']; ?>" data-jenisbibit="<?= $tree['jenis_bibit']; ?>">Update</button>
 
                                         <?php if ($tree['id_pohon'] != session()->get('id_pohon')) : ?>
                                             <form action="<?= base_url('trees/deleteTree/' . $tree['id_pohon']); ?>" method="post" class="d-inline">
@@ -59,6 +59,7 @@
             <form action="<?= base_url('trees/createTree'); ?>" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="id_pohon" id="id_pohon">
+                    <input type="hidden" name="treeID" id="treeID"> <!-- Tambahkan input hidden untuk id -->
                     <div class="mb-3">
                         <label for="inputIdPohon" class="col-form-label">Id Pohon:</label>
                         <input type="text" class="form-control" name="inputIdPohon" id="inputIdPohon" required>
@@ -89,15 +90,19 @@
             $('#inputIdPohon').val('');
             $('#inputTahunTanam').val('');
             $('#inputJenisBibit').val('');
+            $('#treeID').val(''); // Pastikan input hidden untuk id direset saat tambah
         });
         $(".btnEdit").click(function() {
-            const id_pohon = $(this).data('id');
+            const id = $(this).data('id'); // Ambil ID primary key
+            const id_pohon = $(this).data('idpohon');
             const tahun_tanam = $(this).data('tahuntanam');
             const jenis_bibit = $(this).data('jenisbibit');
-            $('#formTreeModalLabel').html('Form Data Pohon');
+
+            $('#formTreeModalLabel').html('Edit Data Pohon');
             $('.modal-footer button[type=submit]').html('Update Pohon');
             $('.modal-content form').attr('action', '<?= base_url('trees/updateTree') ?>');
-            $('#id_pohon').val(id_pohon);
+
+            $('#treeID').val(id); // Set Primary Key
             $('#inputIdPohon').val(id_pohon);
             $('#inputTahunTanam').val(tahun_tanam);
             $('#inputJenisBibit').val(jenis_bibit);
