@@ -9,16 +9,22 @@ class Production extends Migration
     public function up()
     {
         $this->forge->addField([
+            'id' => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'unsigned'       => true,
+                'auto_increment' => true,
+            ],
             'id_produksi' => [
-                'type' => 'VARCHAR',
+                'type'       => 'VARCHAR',
                 'constraint' => 255,
-                'primary' => true,
+                'unique'     => true, // Sudah didefinisikan UNIQUE di sini
             ],
             'tanggal_panen' => [
                 'type' => 'DATE',
             ],
             'id_pohon' => [
-                'type' => 'VARCHAR',
+                'type'       => 'VARCHAR',
                 'constraint' => 255,
             ],
             'jumlah_buah' => [
@@ -42,10 +48,24 @@ class Production extends Migration
             'berat_janjang_panen' => [
                 'type' => 'INT',
             ],
+            'created_at' => [
+                'type'    => 'DATETIME',
+                'null'    => true,
+            ],
+            'updated_at' => [
+                'type'    => 'DATETIME',
+                'null'    => true,
+            ],
         ]);
-        
-        // Menambahkan foreign key
-        $this->forge->addForeignKey('id_pohon', 'tree', 'id_pohon', 'CASCADE', 'CASCADE');
+
+        // Menambahkan primary key
+        $this->forge->addPrimaryKey('id');
+
+        // Menghapus ini karena sudah dideklarasikan di addField()
+        // $this->forge->addKey('id_produksi', false, true); 
+
+        // Menambahkan foreign key ke tabel tree
+        $this->forge->addForeignKey('id_pohon', 'tree', 'id_pohon', 'CASCADE', 'CASCADE', 'fk_production_tree');
 
         $this->forge->createTable('production');
     }
@@ -53,7 +73,7 @@ class Production extends Migration
     public function down()
     {
         // Menghapus foreign key sebelum menghapus tabel
-        $this->forge->dropForeignKey('production', 'production_id_pohon_foreign');
+        $this->forge->dropForeignKey('production', 'fk_production_tree');
         $this->forge->dropTable('production');
     }
-} 
+}

@@ -62,7 +62,7 @@ $routes->get('crudGenerator', 'Developers\CRUDGenerator::index');
 
 //Tree Routes
 $routes->get('trees', 'Trees::index');
-$routes->get('trees/form', 'Trees::form');
+$routes->get('production', 'Production::index');
 
 /*
  * --------------------------------------------------------------------

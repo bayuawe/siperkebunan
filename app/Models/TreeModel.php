@@ -42,17 +42,27 @@ class TreeModel extends Model
         ]
     ];
 
-    // Read
+    // Read - Get all trees or specific tree
     public function getTree($TreeID = false)
     {
         if ($TreeID) {
             return $this->db->table('tree')
-                ->where(['id_pohon' => $TreeID]) // Menggunakan 'id_pohon' sebagai kunci
+                ->where(['id_pohon' => $TreeID])
                 ->get()->getRowArray();
         } else {
             return $this->db->table('tree')
+                ->orderBy('id_pohon', 'ASC')
                 ->get()->getResultArray();
         }
+    }
+
+    // Get all available trees
+    public function getAllTrees()
+    {
+        return $this->db->table('tree')
+            ->select('id_pohon, tahun_tanam, jenis_bibit')
+            ->orderBy('id_pohon', 'ASC')
+            ->get()->getResultArray();
     }
 
     // Insert
@@ -66,23 +76,14 @@ class TreeModel extends Model
     }
 
     // Update
-    // public function updateTree($dataTree)
-    // {
-    //     return $this->db->table('tree')->update([
-    //       'tahun_tanam'     	=> $dataTree['inputTahunTanam'],
-    //       'jenis_bibit'     	=> $dataTree['inputJenisBibit'],
-    //         ], ['id_pohon' => $dataTree['inputTreeID']]);
-    // }
-
     public function updateTree($dataTree)
-{
-    return $this->db->table('tree')->where('id', $dataTree['treeID'])->update([
-        'id_pohon'     => $dataTree['inputIdPohon'],
-        'tahun_tanam'  => $dataTree['inputTahunTanam'],
-        'jenis_bibit'  => $dataTree['inputJenisBibit'],
-    ]);
-}
-
+    {
+        return $this->db->table('tree')->where('id', $dataTree['treeID'])->update([
+            'id_pohon'     => $dataTree['inputIdPohon'],
+            'tahun_tanam'  => $dataTree['inputTahunTanam'],
+            'jenis_bibit'  => $dataTree['inputJenisBibit'],
+        ]);
+    }
 
     // Delete
     public function deleteTree($treeID)
