@@ -1,4 +1,4 @@
-# CodeIgniter 4 Admin Panel Starter
+# CodeIgniter 4
 
 ## Installation & updates
 
@@ -35,4 +35,3 @@ Features on this project:
 - Authorization
 - User Registration
 - Menu Management with auto create controller and view file
-

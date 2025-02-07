@@ -1,7 +1,7 @@
 {
-	"name": "codeigniter4/adminstarter",
+	"name": "codeigniter/admin",
 	"type": "project",
-	"description": "CodeIgniter4 admin panel starter app",
+	"description": "CodeIgniter4 Dashboard",
 	"homepage": "https://gheavshare.com",
 	"license": "MIT",
 	"require": {
