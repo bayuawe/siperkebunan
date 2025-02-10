@@ -1,4 +1,4 @@
-# Plantation Management System
+# Plantation Management System - With CRUD Generator
 
 A web-based plantation management system built with CodeIgniter 4, designed to track and manage tree inventory and production data.
 
